@@ -1,0 +1,33 @@
+.gallery{
+    padding-left: 100px;
+    margin-left: 20px;
+}
+.desc{
+  color: #001d4c;
+  padding-top: 25px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-family: 'Bree Serif', serif;
+}
+.navbar {
+  background-color: #001d4c !important;
+}
+.posts{
+  width: 800px;
+  padding-left: 100px;
+  margin-left: 20px;
+}
+.jumbotron{
+   width: 1100px !important;
+}
+.blockcontent{
+  margin-top: 65px !important;
+}
+#img{
+  border:5px groove #b3bdce;
+}
+#linksect{
+  font-size: 22px;
+  font-family: 'Bree Serif', serif;
+  color: #001335;
+}

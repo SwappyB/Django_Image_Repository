@@ -1,0 +1,34 @@
+{% extends "home/index.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="jumbotron">
+          <h2 class="account-heading">Hello {{ user.username }}</h2>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Contribute in Django repository</legend>
+              {{ p_form.as_p }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Upload</button>
+          </div>
+      </form>
+    </div>
+</div>
+  {% if data %}
+    <h2>Recent Uploads:</h2>
+    <div class="posts">
+    {% for val in data %}
+    <div class="gallery">
+    <div class="desc">{{ val.description }}</div>
+    <img id='img' src="{{ val.image.url }}" alt="" width="640" height="720">
+    </div>
+        {% endfor %}
+  {% else %}
+    <h3>Repository is Empty!</h3>
+    <h4>Upload Now...</h4>
+{% endif %}
+
+
+    </div>
+{% endblock content %}

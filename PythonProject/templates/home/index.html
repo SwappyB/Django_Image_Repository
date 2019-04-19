@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="{% static "/css/homestyle.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md bg-dark fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'index' %}">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Dashboard</a>
+              </div>
+
+              <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'sign_out' %}">Logout</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'sign_in' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'sign_up' %}">Register</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </nav>
+        <main role="main" class="container">
+
+  <div class="blockcontent">
+  <div class="row">
+    <div class="col-md-8">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    </div>
+
+        {% block content %}
+
+        <div class="jumbotron">
+            <h1>Welcome</h1>
+            <h2>This is a Django repository</h2>
+        </div>
+        <a id='linksect' href="profile"> Contribute In This Repository</a>
+
+        {% endblock %}
+
+      </div>
+  </body>
+</html>
